@@ -51,7 +51,7 @@ while 1 == 1 {
         continue
     }
     //check is that bigger than lower Input
-    if integerUpperInput <= lowerInput {
+    if integerUpperInput < lowerInput {
         continue
     }
     upperInput = integerUpperInput
@@ -62,18 +62,30 @@ print(upperInput)
 // Implement the primary logic of the problem here
 var totalOfRAS = 0
 var numberOfDivisor = 0
+
 //a number is between lower input and the upper Input
 for i in stride(from: lowerInput, through: upperInput, by: 1) {
-    for divisor in stride(from: 1, through: i/2, by: 1){
-        if i % divisor == 0 {
-            numberOfDivisor += 1
-        }
-        if numberOfDivisor == 4 {
-            totalOfRAS += 1
-            print("The number between \(lowerInput) and \(upperInput) is \(totalOfRAS)")
-        }
+    //the divisor in the number
+    for divisor in stride(from: 1, through: i, by: 1){
+       if i % divisor == 0 {
+          numberOfDivisor += 1
+    }
+       
+        
+    }
+    if numberOfDivisor == 4 {
+        totalOfRAS += 1
+        numberOfDivisor = 0
+        
+    } else {
+    numberOfDivisor = 0
     }
 }
+
+print(numberOfDivisor)
+print(totalOfRAS)
+        
+           print("The number between \(lowerInput) and \(upperInput) is \(totalOfRAS)")
 
 
 
